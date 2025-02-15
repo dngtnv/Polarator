@@ -9,11 +9,15 @@ export default {
   ],
   theme: {
     screens: {
-      sm: "375px",
+      sm: "640px",
       md: "768px",
-      lg: "1200px",
+      lg: "1024px",
+      xl: "1280px",
     },
     extend: {
+      container: {
+        center: true,
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
