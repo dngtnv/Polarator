@@ -4,7 +4,7 @@ import Camera from "../assets/camera.png";
 
 const Hero = () => {
   return (
-    <section className="pb-20 pt-8 md:pb-10 md:pt-5">
+    <section className="pb-10 pt-8 md:pb-10 md:pt-5">
       <div className="container">
         <div className="mx-auto max-w-lg">
           <div className="flex flex-col items-center md:relative md:w-[478px]">

@@ -1,18 +1,26 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
 const Input = () => {
-  const onDrop = useCallback((acceptedFiles) => {
-    return;
-  }, []);
-  const { getRootProps, acceptedFiles, getInputProps, isDragActive } =
-    useDropzone({
-      onDrop,
-      accept: { "image/*": [".jpeg", ".png"] },
-    });
-  const selectedFile = acceptedFiles[0];
-  console.log(selectedFile);
+  const router = useRouter();
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      if (acceptedFiles.length > 0) {
+        const file = acceptedFiles[0];
+        const imageUrl = URL.createObjectURL(file);
+        router.push(`/upload?image=${encodeURIComponent(imageUrl)}`);
+      }
+    },
+    [router],
+  );
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: { "image/*": [".jpeg", ".png"] },
+    maxFiles: 1,
+  });
   return (
     <section>
       <div className="py-12">
@@ -21,7 +29,7 @@ const Input = () => {
             <div {...getRootProps()}>
               <input {...getInputProps()} />
               {isDragActive ? (
-                <div className="h-60 w-full border-spacing-2 rounded-lg border-4 border-dashed border-black bg-gray-300/35">
+                <div className="mx-auto h-60 w-[90%] border-spacing-2 rounded-lg border-4 border-dashed border-black bg-gray-300/35 md:w-full">
                   <div className="flex h-full flex-col items-center justify-center">
                     <span className="mt-2 text-gray-400">
                       Or drag and drop here
@@ -29,7 +37,7 @@ const Input = () => {
                   </div>
                 </div>
               ) : (
-                <div className="h-60 w-full border-spacing-2 rounded-lg border-4 border-dashed border-black">
+                <div className="mx-auto h-60 w-[90%] border-spacing-2 rounded-lg border-4 border-dashed border-black md:w-full">
                   <div className="flex h-full flex-col items-center justify-center">
                     <span className="cursor-pointer rounded-3xl border-4 border-black bg-[#bae6ff] px-3 py-2 font-semibold">
                       Click to choose a file
@@ -38,7 +46,7 @@ const Input = () => {
                 </div>
               )}
             </div>
-            <p className="mt-2 text-center">
+            <p className="mt-2 text-center text-sm md:text-base">
               (Only *.jpeg and *.png images will be accepted)
             </p>
           </div>
