@@ -53,8 +53,9 @@ export default function Upload() {
     // Set canvas size to match Polaroid frame
     const polaroidWidth = 400;
     const polaroidHeight = 500;
-    canvas.width = polaroidWidth;
-    canvas.height = polaroidHeight;
+    const scale = 2;
+    canvas.width = polaroidWidth * scale;
+    canvas.height = polaroidHeight * scale;
 
     // Load image into canvas
     const img = document.createElement("img") as HTMLImageElement;
@@ -70,8 +71,8 @@ export default function Upload() {
       croppedArea.height,
       0,
       0,
-      polaroidWidth,
-      polaroidHeight,
+      polaroidWidth * scale,
+      polaroidHeight * scale,
     );
 
     const croppedImageUrl = canvas.toDataURL("image/png");
