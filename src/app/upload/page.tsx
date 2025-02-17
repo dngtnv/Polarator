@@ -9,7 +9,7 @@ export default function Upload() {
   const router = useRouter();
   const [image, setImage] = useState<string | null>(null);
   const [text, setText] = useState("Your Text Here");
-  const [font, setFont] = useState("font-sans");
+  const [font, setFont] = useState("font-caveat");
   const polaroidRef = useRef<HTMLDivElement>(null);
 
   const handleDownload = async () => {
@@ -17,6 +17,7 @@ export default function Upload() {
 
     const canvas = await html2canvas(polaroidRef.current, {
       backgroundColor: null,
+      scale: 2, // Higher resolution
     });
     const imageURL = canvas.toDataURL("image/png");
     const link = document.createElement("a");
@@ -53,9 +54,9 @@ export default function Upload() {
             width={200}
             className="relative h-full w-full object-cover"
           />
-          <div className="mt-3 flex h-12 items-center justify-center">
+          <div className="mt-3 flex items-center justify-center">
             <p
-              className={`text-center ${font} text-xl font-bold text-[#4b4b4b] md:text-2xl`}
+              className={`h-12 whitespace-nowrap text-center leading-10 tracking-wider ${font} text-xl font-bold text-[#4b4b4b] md:text-4xl`}
             >
               {text}
             </p>
@@ -73,9 +74,9 @@ export default function Upload() {
           onChange={(e) => setFont(e.target.value)}
           className="mt-4 rounded border p-2 focus-within:outline-dashed focus-within:outline-4"
         >
-          <option value="font-sans">Sans</option>
-          <option value="font-serif">Serif</option>
-          <option value="font-mono">Monospace</option>
+          <option value="font-caveat">Caveat</option>
+          <option value="font-imperial">Imperial Script</option>
+          <option value="font-shadow">Shadow Into Light</option>
         </select>
       </div>
       <div className="flex items-center gap-4">
