@@ -8,7 +8,7 @@ const Hero = () => {
       <div className="container">
         <div className="mx-auto max-w-lg">
           <div className="flex flex-col items-center md:relative md:w-[478px]">
-            <h1 className="mt-6 text-center text-5xl font-bold tracking-tighter md:text-7xl">
+            <h1 className="mt-6 text-center text-5xl font-bold tracking-tighter md:text-6xl">
               Polaroid Photo{" "}
               <span className="bg-[linear-gradient(to_bottom,transparent_55%,#ffdc58_50%)]">
                 Generator
