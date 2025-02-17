@@ -22,6 +22,11 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        caveat: ["Caveat", "cursive"],
+        imperial: ["Imperial Script", "cursive"],
+        shadow: ["Shadows Into Light", "cursive"],
+      },
     },
   },
   plugins: [],
